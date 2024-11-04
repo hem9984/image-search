@@ -39,11 +39,11 @@ const Results = () => {
       try {
         const { file, searchText } = JSON.parse(searchData);
         
-        // Updated API endpoint
         const response = await fetch("https://vision.googleapis.com/v1/images:annotate", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.VITE_GOOGLE_CLOUD_API_KEY}`
           },
           body: JSON.stringify({
             requests: [
