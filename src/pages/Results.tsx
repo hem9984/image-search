@@ -39,8 +39,8 @@ const Results = () => {
       try {
         const { file, searchText } = JSON.parse(searchData);
         
-        // Mock API call - replace with actual API endpoint
-        const response = await fetch("YOUR_API_ENDPOINT", {
+        // Updated API endpoint
+        const response = await fetch("https://vision.googleapis.com/v1/images:annotate", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -59,6 +59,10 @@ const Results = () => {
                 ],
                 imageContext: {
                   productSearchParams: {
+                    productSet: "projects/project-id/locations/location-id/productSets/product-set-id",
+                    productCategories: [
+                      "apparel"
+                    ],
                     filter: searchText,
                   },
                 },
